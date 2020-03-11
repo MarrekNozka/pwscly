@@ -2,12 +2,14 @@
 
 import os
 import sys
+import signal
 import pypwsafev3
 from pypwsafev3 import PWSafe3
 from getpass import getpass
 from subprocess import run
 
 SEPARATOR = ".:."
+PWSCLYFILE = "PWSCLYFILE"
 
 null = open(os.devnull, "w")
 stderr = sys.stderr
@@ -19,11 +21,22 @@ def endline(string):
     return string
 
 
+def interupt(signal, frame):
+    print("Ctrl+C")
+    exit(1)
+
+
+signal.signal(signal.SIGINT, interupt)
+
+
 try:
-    path = os.environ.get("PWCLYFILE") or sys.argv[1]
+    path = sys.argv[1]
 except IndexError:
+    path = os.environ.get(PWSCLYFILE)
+if not path:
     stderr.write(
-        "You must specify filename on commandline or by PWCLYFILE variable.\n"
+        f"You must specify filename on commandline or by "
+        "{PWSCLYFILE} variable.\n"
     )
     exit(2)
 

@@ -3,9 +3,9 @@
 CLI tool for read [.pwsafe3](https://pwsafe.org/) file with fuzzy search.
 
 * Password is saved to X-clipboard.
-* Is possible spicify `password-file` by `PWCLYFILE` enviroment variable.
+* Is possible specify `password-file` by `PWSCLYFILE` environment variable.
 
-![https://github.com/nbedos/termtosvg](pwcly.svg)
+![https://github.com/nbedos/termtosvg](pwscly.svg)
 
 ## Dependencies
 
