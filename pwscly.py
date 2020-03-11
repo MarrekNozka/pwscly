@@ -19,7 +19,14 @@ def endline(string):
     return string
 
 
-path = sys.argv[1]
+try:
+    path = os.environ.get("PWCLYFILE") or sys.argv[1]
+except IndexError:
+    stderr.write(
+        "You must specify filename on commandline or by PWCLYFILE variable.\n"
+    )
+    exit(2)
+
 password = getpass("[{0}] password > ".format(path))
 
 sys.stderr = null
@@ -51,6 +58,9 @@ for record in safe:
 fzy = run(["fzy"], input=data.encode("utf8"), capture_output=True)
 
 line = fzy.stdout.decode("utf8")
+if not line:
+    print("Noinput")
+    exit(0)
 group, title, username, url, notes = line.strip().split(SEPARATOR)
 print(
     f"""Group: {group}
