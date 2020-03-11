@@ -12,6 +12,12 @@ CLI tool for read [.pwsafe3](https://pwsafe.org/) file with fuzzy search.
 * [pypwsafev3](https://github.com/voytecPL/pypwsafev3)
 * [fzy](https://github.com/jhawthorn/fzy)
 
+```
+# apt-get install fzy
+$ pip3 install pypwsafev3
+
+```
+
 ## Inspiration
 
 * <https://github.com/ronys/pypwsafe>
